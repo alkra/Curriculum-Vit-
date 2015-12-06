@@ -1,0 +1,9 @@
+# KDE files
+.directory
+
+# Backup files
+*~
+
+# TeX output
+*.aux
+*.log
