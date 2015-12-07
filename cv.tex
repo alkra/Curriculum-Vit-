@@ -1,0 +1,95 @@
+%%  Alban KRAUS
+%%  December 6th, 2015
+%%
+%%  Curriculum Vitæ
+%%  Version: General
+%%
+%%  The content of this work (the Content) is made of all .tex files
+%%  of this repository, as well as the images located in the imgs
+%%  subfolder. It is protected under the French law. Permission is
+%%  granted to:
+%%
+%%  * download and read the Content; you may make minor modifications
+%%    in order to make the files readable;
+%%
+%%  * generate a compiled document from the unmodified Content;
+%%
+%%  * modify all or part of the Content, thus creating a derivative
+%%    work; in that case, you must remove all content that refer to
+%%    me, such as my name, photograph, and other personal data. This
+%%    permission does not apply to the photographs in imgs folder;
+%%    thus, you must remove them from your derivative work.
+%%
+%%  You may distribute unmodified copies of the Content. You may
+%%  distribute a compiled document if it respects the semantics and
+%%  disposition of the output of pdflatex running on the unmodified
+%%  Content. In any case, you are not allowed to make commercial
+%%  benefits from the distribution. If you distribute any of the
+%%  preceding, you must not apply terms that restrict or extend the
+%%  permissions you have been granted.
+%%
+%%  Alternatively, you can reuse the Content under the terms of the
+%%  Creative Commons – Attribution – Non-commercial – No derivatives
+%%  licence.
+
+\documentclass[a4paper, oneside, 11pt, final]{article}
+
+\usepackage[utf8]{inputenc} % Setting the encoding of the file
+
+\newcommand\imgdir{imgs/}
+\newcommand\lang{en}
+
+\usepackage{cv}
+
+\newlength{\englishbox} % For the TOEIC parbox
+\settowidth{\englishbox}{\textbf{English}}
+\newlength{\frenchbox}
+\settowidth{\frenchbox}{Mother tongue}
+\newlength{\germanbox}
+\settowidth{\germanbox}{Proficient}
+
+
+% Adding color to my document
+\definecolor{edu}{rgb}{0, 0, 0}
+\newcommand{\education}[1]{\textbf{\color{edu}\large #1}}
+\definecolor{work}{rgb}{0, 0, 0}
+\newcommand{\work}[1]{\textbf{\color{work}\large #1}}
+\definecolor{english}{rgb}{0, 0, 0.2}
+\newcommand{\englishcolor}{\color{english}}
+
+%%%%%%
+%%%%%%
+\begin{document}
+
+\input{heading}
+
+\input{\lang/2-skills}
+
+\newlength\arrayskip
+\setlength\arrayskip{3pt}
+\renewcommand{\arraystretch}{1.5}
+\newcommand\content[1]{%
+  \parbox{\tablecontw}{%
+    \setlength\parskip{2pt}%
+    \vspace{\arraystretch\arrayskip}%
+    #1%
+    \vspace{\arraystretch\arrayskip}%
+  }%
+}
+\setlength\parskip{2pt}
+
+\input{\lang/3-education}
+
+\input{\lang/4-work}
+
+\renewcommand\arraystretch{1}
+\setlength\parskip{\defaultparskip}
+
+\input{ending}
+
+
+%\clearpage
+
+%\newgeometry{top=3cm, bottom=3cm, left=3.5cm, right=3.5cm}
+%\input{cl.cont.tex}
+\end{document}

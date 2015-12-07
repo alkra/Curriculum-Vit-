@@ -1,0 +1,106 @@
+%%  Alban KRAUS
+%%  December 6th, 2015
+%%
+%%  Curriculum Vitæ style
+%%  Version: General
+%%
+%%  This work may be distributed and/or modified under the conditions
+%%  of the GNU Lesser General Public License version 3.0 or later.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cv}[2015/12/06 CV stylesheet]
+
+% OPTIONS
+\newif\ifprinted
+\printedfalse
+
+\DeclareOption{printed}{
+  \printedtrue
+}
+
+\ProcessOptions\relax
+
+% LENGTHS DECLARATION
+\newlength\defaultparskip
+\newlength\defaulttabcolsep
+\newlength\defaultfboxsep
+\newlength\tabledatew % Left-part width
+\newlength\tablecontw % Right-part width
+
+% LOCALE
+\RequirePackage[T1]{fontenc} % Setting the output font encoding
+\RequirePackage{lmodern}
+\usepackage[french, UKenglish]{babel} % Language pack
+\usepackage[super]{nth}
+
+% PAGE LAYOUT
+\RequirePackage[left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry} % Setting margins and layout
+\pagestyle{empty} % Setting the header and footer
+
+% TABLES
+\usepackage{array}
+\newcolumntype{d}{>{\raggedleft}m{\tabledatew}}
+\usepackage{tabularx} % To draw sophisticated tables
+\usepackage{tabu}
+\usepackage{multirow}
+
+% LAYOUT LENGTHS
+\setlength{\defaultparskip}{0.9em}
+\setlength\defaulttabcolsep{\tabcolsep}
+\setlength{\parindent}{0em} % § indent
+\setlength{\parskip}{0em} % space between two §
+\setlength{\tabcolsep}{6pt}
+\setlength{\tabledatew}{0.14\textwidth} % Left-part width (unused)
+\setlength{\tablecontw}{\textwidth}
+\addtolength\tablecontw{-\tabledatew}
+\addtolength\tablecontw{-2\tabcolsep}
+
+\RequirePackage{enumitem}
+\setlist{nolistsep}
+
+% GRAPHICS
+\usepackage{wrapfig} % To wrap an image with text
+\usepackage{graphicx} % To include images
+
+% HYPERLINKS
+\RequirePackage[
+pdftitle={Alban Kraus},
+pdfauthor={Alban Kraus},
+pdfsubject={},
+]{hyperref}
+\gdef\printedHref#1#2{%
+  #2%
+}
+\ifprinted
+\let\Href\printedHref
+\else
+\let\Href\href
+\fi
+
+% COLORS
+\RequirePackage{color}
+\definecolor{titles}{rgb}{0.05, 0, 0.15}
+
+% TITLES
+\setlength\defaultfboxsep{\fboxsep}
+\RequirePackage{titlesec}
+\titlespacing{\section}{0em}{0.3em}{0.1em}
+%             title    left before after
+\titleformat*{\section}{\color{titles}\centering\bfseries\Large\uppercase}
+\newcommand\cvtitle[1]{%
+  \setlength\fboxsep{0pt}
+
+  \vspace{1em}
+
+  \framebox[\linewidth][c]{%
+    \parbox{0.9\linewidth}{%
+      \addcontentsline{toc}{section}{#1}
+      \section*{#1}%
+    }%
+  }
+
+  \vspace{0.4em}
+}
+
+
+\endinput

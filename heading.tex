@@ -1,0 +1,32 @@
+\newlength\imgwidth
+\newlength\imgheight
+\newlength\piWidth
+\setlength\imgheight{10em}
+\setlength\imgwidth{0.820408163\imgheight}
+\setlength\piWidth{0.5\textwidth}
+
+\newcommand\imgname{%
+  \ifprinted%
+    bon-profil%
+  \else%
+    bon-profil-leger%
+  \fi%
+}
+
+\setlength\tabcolsep{0.5\defaulttabcolsep}
+
+\hspace{\tabcolsep}
+\begin{minipage}{\piWidth}%
+  \input{\lang/1-personal-informations}
+\end{minipage}
+\hfill
+\begin{minipage}{\imgwidth}
+  \includegraphics[width=\imgwidth, height=\imgheight, keepaspectratio=true]{\imgdir\imgname}
+\end{minipage}
+
+\setlength\tabcolsep{\defaulttabcolsep}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "cv"
+%%% End:
