@@ -39,6 +39,12 @@
 \newcommand\imgdir{imgs/}
 \newcommand\lang{fr}
 
+\newif\ifcv
+\newif\ifletter
+
+\cvtrue
+\letterfalse
+
 \usepackage[\lang]{cv}
 
 \newlength{\englishbox} % For the TOEIC parbox
@@ -60,6 +66,11 @@
 %%%%%%
 %%%%%%
 \begin{document}
+
+%%%%%%
+% CV %
+%%%%%%
+\ifcv
 
 \input{heading}
 
@@ -92,9 +103,47 @@
 
 \input{ending}
 
+\ifletter
+  \clearpage
+\fi
+\fi
 
-%\clearpage
 
-%\newgeometry{top=3cm, bottom=3cm, left=3.5cm, right=3.5cm}
-%\input{cl.cont.tex}
+%%%%%%%%%%
+% Letter %
+%%%%%%%%%%
+\ifletter
+
+\newgeometry{top=3cm, bottom=3cm, left=3.5cm, right=3.5cm}
+\setlength{\parskip}{0.3\defaultparskip}
+
+\setlength{\tabcolsep}{0pt}
+\begin{tabularx}{\textwidth}{l r}
+\parbox{0.5\textwidth}{
+  \input{letter/1-sender}
+} & \parbox{0.5\textwidth} {
+  \raggedleft
+  \input{letter/2-recipient}
+}\\
+\end{tabularx}
+
+\bigskip
+
+\begin{flushright}
+  Noisy-le-Grand, le \today
+\end{flushright}
+
+\textbf{Objet~:}
+\input{letter/3-object}
+
+\bigskip
+\setlength{\parskip}{\defaultparskip}
+
+\input{letter/4-address}
+
+\input{letter/5-content}
+
+\input{letter/6-sign}
+
+\fi
 \end{document}
