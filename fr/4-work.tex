@@ -1,0 +1,46 @@
+\input{\lang/work}
+
+\newif\ifstruct       % IT3 structuration project
+\newif\ifopenglT      % opengl IT3 project
+\newif\ifgeoconcept   % IT2 internship
+\newif\ifdevelopement % IT2 developement project
+\newif\ifresearch     % IT2 research project
+\newif\ifforcalquier  % IT1 Forcalquier internship
+
+\structfalse
+\openglTfalse
+\geoconcepttrue
+\developementfalse
+\researchtrue
+\forcalquiertrue
+
+\cvtitle{Projets et stages}
+
+\begin{tabu} to \linewidth {@{}d X@{}}
+  \ifstruct
+  \fi
+
+  \ifopenglT
+  \fi
+
+  \ifgeoconcept
+  \geoconceptdate & \content{\geoconceptcont}\\
+  \fi
+
+  \ifdevelopement
+  \developementdate & \content{\developementcont}\\
+  \fi
+
+  \ifresearch
+  \researchdate & \content{\researchcont}\\
+  \fi
+
+  \ifforcalquier
+  \forcalquierdate & \content{\forcalquiercont}\\
+  \fi
+\end{tabu}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../cv"
+%%% End:

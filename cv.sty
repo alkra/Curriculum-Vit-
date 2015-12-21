@@ -18,6 +18,31 @@
   \printedtrue
 }
 
+\newif\ifenglish
+\englishtrue
+\newif\iffrench
+\frenchfalse
+\newif\ifgerman
+\germanfalse
+
+\DeclareOption{fr}{
+  \englishfalse
+  \frenchtrue
+  \germanfalse
+}
+
+\DeclareOption{en}{
+  \englishtrue
+  \frenchfalse
+  \germanfalse
+}
+
+\DeclareOption{de}{
+  \englishfalse
+  \frenchfalse
+  \germantrue
+}
+
 \ProcessOptions\relax
 
 % LENGTHS DECLARATION
@@ -30,8 +55,18 @@
 % LOCALE
 \RequirePackage[T1]{fontenc} % Setting the output font encoding
 \RequirePackage{lmodern}
-\usepackage[french, UKenglish]{babel} % Language pack
-\usepackage[super]{nth}
+\iffrench
+  \usepackage[french]{babel}
+\else
+  \ifenglish
+    \usepackage[french, english]{babel} % Language pack
+    \usepackage[super]{nth}
+  \else
+    \ifgerman
+      \usepackage[french, german]{babel}
+    \fi
+  \fi
+\fi
 
 % PAGE LAYOUT
 \RequirePackage[left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm]{geometry} % Setting margins and layout
