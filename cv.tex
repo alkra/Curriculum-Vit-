@@ -120,8 +120,10 @@
 \setlength{\tabcolsep}{0pt}
 \begin{tabularx}{\textwidth}{l r}
 \parbox{0.5\textwidth}{
+  \setlength{\parskip}{0.3\defaultparskip}
   \input{letter/1-sender}
 } & \parbox{0.5\textwidth} {
+  \setlength{\parskip}{0.3\defaultparskip}
   \raggedleft
   \input{letter/2-recipient}
 }\\
@@ -133,7 +135,7 @@
   Noisy-le-Grand, \today
 \end{flushright}
 
-\textbf{Objet~:}
+\textbf{Subject:}
 \input{letter/3-object}
 
 \bigskip
