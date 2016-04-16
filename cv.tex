@@ -32,7 +32,7 @@
 %%  Creative Commons – Attribution – Non-commercial – No derivatives
 %%  licence.
 
-\documentclass[a4paper, oneside, 11pt, final]{article}
+\documentclass[a4paper, oneside, 11pt, draft]{article}
 
 \usepackage[utf8]{inputenc} % Setting the encoding of the file
 
@@ -82,8 +82,13 @@
 
 \input{\lang/4-work}
 
+\renewcommand\arraystretch{1.2}
+%\setlength\parskip{\defaultparskip}
+
+\input{\lang/5-computer}
+
 \renewcommand\arraystretch{1}
-\setlength\parskip{\defaultparskip}
+%\setlength\parskip{\defaultparskip}
 
 \input{ending}
 
