@@ -3,16 +3,20 @@
 \newif\ifstruct       % IT3 structuration project
 \newif\ifopenglT      % opengl IT3 project
 \newif\ifgeoconcept   % IT2 internship
+\newif\ifgeoconceptlong
 \newif\ifdevelopement % IT2 developement project
 \newif\ifresearch     % IT2 research project
 \newif\ifforcalquier  % IT1 Forcalquier internship
+\newif\ifforcalquierlong
 
 \structfalse
 \openglTfalse
 \geoconcepttrue
+\geoconceptlongtrue
 \developementfalse
 \researchtrue
 \forcalquiertrue
+\forcalquierlongfalse
 
 \cvtitle{Projets et stages}
 
@@ -24,7 +28,12 @@
   \fi
 
   \ifgeoconcept
-  \geoconceptdate & \content{\geoconceptcont}\\
+  \geoconceptdate & \content{%
+    \geoconceptcont
+    \ifgeoconceptlong
+      \geoconceptlong%
+    \fi%
+  }\\
   \fi
 
   \ifdevelopement
@@ -36,7 +45,12 @@
   \fi
 
   \ifforcalquier
-  \forcalquierdate & \content{\forcalquiercont}\\
+  \forcalquierdate & \content{%
+    \forcalquiercont
+    \ifforcalquierlong
+      \forcalquierlong%
+    \fi%
+  }\\
   \fi
 \end{tabu}
 
