@@ -1,5 +1,7 @@
 \input{en/work}
 
+\newif\iftuwien       % IT3 internship
+\newif\iftuwienlong
 \newif\ifstruct       % IT3 structuration project
 \newif\ifopenglT      % opengl IT3 project
 \newif\ifgeoconcept   % IT2 internship
@@ -9,6 +11,8 @@
 \newif\ifforcalquier  % IT1 Forcalquier internship
 \newif\ifforcalquierlong
 
+\tuwientrue
+\tuwienlongtrue
 \structfalse
 \openglTfalse
 \geoconcepttrue
@@ -21,10 +25,20 @@
 \cvtitle{Projects and Internships}
 
 \begin{tabu} to \linewidth {@{}d X@{}}
+  \iftuwien
+  \tuwiendate & \content{%
+    \tuwiencont
+    \iftuwienlong
+      \tuwienlong%
+    \fi%
+  }\\
+  \fi
+
   \ifstruct
   \fi
 
   \ifopenglT
+  \openglTdate & \content{\openglTcont}\\
   \fi
 
   \ifgeoconcept
