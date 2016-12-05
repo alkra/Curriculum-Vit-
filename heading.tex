@@ -1,9 +1,22 @@
 \newlength\imgwidth
 \newlength\imgheight
-\newlength\piWidth
+\newlength\nameWidth
+\newlength\addressWidth
+\newlength\photoWidth
+\newcommand\photoRatio{}
 \setlength\imgheight{10em}
 \setlength\imgwidth{0.820408163\imgheight}
-\setlength\piWidth{0.5\textwidth}
+
+\ifphoto
+\setlength\nameWidth{0.45\textwidth}
+\setlength\addressWidth{0.3\textwidth}
+\renewcommand\photoRatio{0.25}
+\else
+\setlength\nameWidth{0.5\textwidth}
+\setlength\addressWidth{0.5\textwidth}
+\renewcommand\photoRatio{0}
+\fi
+\setlength\photoWidth{\photoRatio\textwidth}
 
 \newcommand\imgname{%
   \ifprinted%
@@ -13,18 +26,29 @@
   \fi%
 }
 
-\setlength\tabcolsep{0.5\defaulttabcolsep}
+\setlength\tabcolsep{0pt}
 
-\hspace{\tabcolsep}
-\begin{minipage}{\piWidth}%
+\begin{tabular}{@{}p{\nameWidth}@{}p{\addressWidth}@{}p{\photoWidth}@{}}
   \input{\lang/1-personal-informations}
-\end{minipage}
-\hfill
-\begin{minipage}{\imgwidth}
-  \includegraphics[width=\imgwidth, height=\imgheight, keepaspectratio=true]{\imgdir\imgname}
-\end{minipage}
+  &
+    \ifphoto
+    \setlength\unitlength{\textwidth}%
+    \begin{picture}(\photoRatio,0)
+      \newsavebox{\image}
+      \savebox{\image}(\photoRatio, 0)[tr]{%
+        \includegraphics[width=\imgwidth, height=\imgheight, keepaspectratio=true]{\imgdir\imgname}%
+      }%
+      \put(0, 0.05){\usebox{\image}}
+    \end{picture}%
+    \fi
+\end{tabular}
 
 \setlength\tabcolsep{\defaulttabcolsep}
+
+\vspace{-1em}
+\begin{center}\Large
+  \input{\lang/0-title}
+\end{center}
 
 %%% Local Variables:
 %%% mode: latex
